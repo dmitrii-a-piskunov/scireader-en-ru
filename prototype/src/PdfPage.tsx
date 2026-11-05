@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { indexPage, loadPdf, TextLayer, type PageText } from './pdf';
-import type { Formula, Region } from './model';
+import { formulaRegions, type Formula, type Region } from './model';
 import 'pdfjs-dist/web/pdf_viewer.css';
 
 type Props = {
@@ -94,9 +94,11 @@ export function PdfPage(props: Props) {
           <div key={id + '-' + i} data-region={id} className={'highlight ' + (Number(id) === props.active ? 'active' : '')} style={style(r)} />))}
         {drawing && <div className="draw-region" style={style(drawing)} />}
       </div>
-      {!props.repair && props.formulas.filter(f => f.region.page === props.page).map(f =>
-        <button key={f.id} className="formula-pin" style={{ top: f.region.y * 100 + '%', left: '95%' }}
-          title={f.spoken} aria-label={'Чтение формулы ' + f.id} onClick={e => { e.stopPropagation(); props.onFormula(f.id); }}>ƒ</button>)}
+      {!props.repair && props.formulas.flatMap(f => formulaRegions(f).filter(r => r.page === props.page).map((r, index) =>
+        <button key={f.id + '-' + index} className="formula-hit" style={style(r)}
+          data-formula={f.id} data-side="en" data-formula-region={index}
+          title={f.spoken} aria-label={'Чтение формулы ' + f.id}
+          onClick={event => { event.stopPropagation(); props.onFormula(f.id); }} />))}
       {error && <div role="alert" className="page-error">{error}</div>}
     </div>
   </section>;
