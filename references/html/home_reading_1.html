@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Home Reading 1 - Article Layout</title>
+<style>
+  :root { --pal: 'Palatino Linotype','Book Antiqua',Palatino,'URW Palladio L','TeX Gyre Pagella','P052',serif; }
+  body { margin: 0; padding: 24px 0 60px; background: #e9e9ec; color: #000; font-family: var(--pal); }
+  .top { width: max-content; margin: 0 auto 14px; font: 13px/1.4 'Segoe UI', Arial, sans-serif; color: #555; text-align: center; }
+  .wrap { display: flex; gap: 28px; justify-content: center; align-items: flex-start; }
+  .sheet { background: #fff; box-shadow: 0 1px 6px rgba(0,0,0,.18); padding: 42pt 40pt 48pt; }
+  .label { font: 11px 'Segoe UI', Arial, sans-serif; color: #888; text-transform: uppercase; letter-spacing: .6px; margin: 0 0 14pt; }
+  .col { width: 392.9pt; font-size: 10pt; line-height: 12.55pt; font-family: var(--pal); }
+
+  /* ---- English: line by line, exactly as in the article ---- */
+  .ln { white-space: nowrap; text-align: justify; text-align-last: justify; height: 12.55pt; overflow: visible; }
+  .ln.last { text-align-last: left; }
+  .para > .ln:first-child.first, .para > .ln.first { padding-left: 21.3pt; }
+  .head { font-weight: bold; margin: 9.5pt 0 3.5pt; }
+  .head .ln { text-align-last: left; }
+  .bul { position: relative; padding-left: 21.6pt; margin: 0; }
+  .bul .dot { position: absolute; left: 0; }
+  .bul + .bul { margin-top: 0; }
+  .para + .bul, .bul:first-of-type { }
+  .bul.pre { margin-top: 2.5pt; }
+  .prev { color: #aaa; }
+  .rpara + .rbul, .para + .bul { margin-top: 2.5pt; }
+  .bul + .para { margin-top: 3.5pt; }
+
+  /* ---- Russian: same font, width and indents, natural wrapping ---- */
+  .rpara, .rbul, .rhead { margin: 0; text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
+  .rpara { text-indent: 21.3pt; }
+  .rpara.cont { text-indent: 0; }
+  .rbul { position: relative; padding-left: 21.6pt; }
+  .rbul .dot { position: absolute; left: 0; }
+  .rhead { font-weight: bold; margin: 9.5pt 0 3.5pt; text-align: left; }
+  .rbul + .rpara { margin-top: 3.5pt; }
+  .rpara + .rbul { margin-top: 2.5pt; }
+
+  /* ---- hover ---- */
+  .s { transition: background .12s; }
+  .s.hl { background: #ffe3a8; box-shadow: 0 0 0 1px #ffe3a8; border-radius: 1px; }
+  .s.sel { background: #ffc94d; box-shadow: 0 0 0 1px #ffc94d; border-radius: 1px; }
+  .s.sel.hl { background: #ffc94d; }
+  .s { cursor: pointer; }
+  .bar { position: fixed; left: 50%; bottom: 14px; transform: translateX(-50%); background: #2c3e50; color: #fff;
+         font: 13px 'Segoe UI', Arial, sans-serif; padding: 7px 16px; border-radius: 18px; opacity: .92; white-space: nowrap; }
+  .bar kbd { background: #fff; color: #2c3e50; border-radius: 3px; padding: 0 5px; margin: 0 2px; font: inherit; }
+  .foot { width: max-content; margin: 18px auto 0; font: 12px 'Segoe UI', Arial, sans-serif; color: #888; }
+
+  /* Home Reading 1: article-like natural line wrapping */
+  #en .para { text-align: justify; text-indent: 21.3pt; margin: 0 0 4pt; }
+  #en .head { text-align: left; text-indent: 0; }
+  #en .equation, #ru .requation { text-align: center; margin: 9pt 0; font-style: italic; }
+  #ru .rpara { margin-bottom: 4pt; }
+  .wrap { padding: 0 20px; }
+  .col { overflow-wrap: break-word; }
+  @media(max-width: 1100px) { .wrap { flex-wrap: wrap; } .sheet { max-width: calc(100vw - 90px); } .col { width: min(392.9pt, calc(100vw - 110px)); } .foot { width: auto; text-align: center; padding: 0 20px; } }
+</style>
+<style>
+/* LaTeX display math with source-style equation numbers */
+#en .equation, #ru .requation { position:relative; font-style:normal; padding: 3pt 28pt; min-height: 22pt; }
+.equation .s, .requation .s { display:block; position:relative; }
+.math-tex { display:inline-block; max-width:100%; }
+.eq-number { position:absolute; right:-25pt; top:50%; transform:translateY(-50%); font-style:normal; font-size:9pt; }
+mjx-container { margin:0 !important; max-width:100%; }
+@media(max-width:600px) { mjx-container { font-size:85% !important; } }
+</style><script>window.MathJax = { tex: { inlineMath: [["\\(", "\\)"]] }, options: { skipHtmlTags: ["script", "noscript", "style", "textarea", "pre", "code"] } };</script><script defer="True" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><style>
+/* Exact source-PDF line breaks: one div per printed line, no browser wrapping. */
+#en .para { text-indent:0; margin:0 0 4pt; }
+#en .para .ln { white-space:pre; text-align:justify; text-align-last:justify; height:12.55pt; overflow:visible; }
+#en .para .ln.last { text-align-last:left; }
+#en .para .ln.first { padding-left:21.3pt; }
+#en .para .ln .s { white-space:pre; }
+#en { overflow-wrap:normal; }
+@media(max-width:1100px) { #en { width:392.9pt; } .sheet:has(#en) { overflow-x:auto; max-width:calc(100vw - 90px); } }
+</style><style>
+#en { font-size:9.6pt; }
+#en .head .ln { white-space:pre; height:auto; text-align:left; text-align-last:left; }
+#en [data-block="1"], #en [data-block="2"] { font-size:8.8pt; }
+.foot { width:auto; max-width:1250px; text-align:center; padding:0 20px; }
+</style></head>
+<body>
+<div class="top">Home Reading 1 · наведите курсор на предложение в любой колонке, чтобы подсветить его пару</div>
+<div class="wrap">
+<div class="sheet">
+<div class="label">English · Sensors 2023, 23, 3762, pp. 1–2</div>
+<div class="col" id="en"><div class="head" data-block="0"><div class="ln"><span class="s" data-i="0">A Survey on Deep Reinforcement Learning Algorithms for</span></div><div class="ln last"><span class="s" data-i="0">Robotic Manipulation</span></div></div><div class="para" data-block="1"><div class="ln"><span class="s" data-i="1">Abstract: Robotic manipulation challenges, such as grasping and object manipulation, have been</span></div><div class="ln"><span class="s" data-i="1">tackled successfully with the help of deep reinforcement learning systems. </span><span class="s" data-i="2">We give an overview</span></div><div class="ln"><span class="s" data-i="2">of the recent advances in deep reinforcement learning algorithms for robotic manipulation tasks in</span></div><div class="ln"><span class="s" data-i="2">this review. </span><span class="s" data-i="3">We begin by outlining the fundamental ideas of reinforcement learning and the parts</span></div><div class="ln"><span class="s" data-i="3">of a reinforcement learning system. </span><span class="s" data-i="4">The many deep reinforcement learning algorithms, such as</span></div><div class="ln"><span class="s" data-i="4">value-based methods, policy-based methods, and actor–critic approaches, that have been suggested</span></div><div class="ln"><span class="s" data-i="4">for robotic manipulation tasks are then covered. </span><span class="s" data-i="5">We also examine the numerous issues that have</span></div><div class="ln"><span class="s" data-i="5">arisen when applying these algorithms to robotics tasks, as well as the various solutions that have</span></div><div class="ln"><span class="s" data-i="5">been put forth to deal with these issues. </span><span class="s" data-i="6">Finally, we highlight several unsolved research issues and</span></div><div class="ln last"><span class="s" data-i="6">talk about possible future directions for the subject.</span></div></div><div class="para" data-block="2"><div class="ln last"><span class="s" data-i="7">Keywords: reinforcement learning; robotic manipulation; graph neural network</span></div></div><div class="head" data-block="3"><div class="ln last"><span class="s" data-i="8">1. Introduction</span></div></div><div class="para" data-block="4"><div class="ln first"><span class="s" data-i="9">Industry 4.0’s embrace of artificial intelligence (AI) has drastically changed the in-</span></div><div class="ln"><span class="s" data-i="9">dustrial sector by allowing machines to operate autonomously, increasing productivity,</span></div><div class="ln"><span class="s" data-i="9">lowering costs, and improving product quality [1]. </span><span class="s" data-i="10">In order to make decisions quickly</span></div><div class="ln"><span class="s" data-i="10">and efficiently during the manufacturing process, artificial intelligence (AI) technology</span></div><div class="ln"><span class="s" data-i="10">analyzes enormous amounts of data produced by machines and processes. </span><span class="s" data-i="11">In the next five</span></div><div class="ln"><span class="s" data-i="11">years, its total market value is expected to triple [2]. </span><span class="s" data-i="12">Robotics is one of the markets that is</span></div><div class="ln"><span class="s" data-i="12">anticipated to expand at the fastest rates. </span><span class="s" data-i="13">With the concept of robot manipulation proposed</span></div><div class="ln"><span class="s" data-i="13">in 1962 [3], the idea of a robot is to mimic human behavior and tackle complex tasks. </span><span class="s" data-i="14">A</span></div><div class="ln"><span class="s" data-i="14">branch of robotics called robotic manipulation is focused on developing robots that can</span></div><div class="ln"><span class="s" data-i="14">manipulate items in their environment. </span><span class="s" data-i="15">Robotic manipulation seeks to develop robotic</span></div><div class="ln"><span class="s" data-i="15">systems that can carry out a variety of activities that call for the manipulation of things,</span></div><div class="ln"><span class="s" data-i="15">such as putting together goods in a factory, picking and placing items in a warehouse, or</span></div><div class="ln"><span class="s" data-i="15">performing surgery in a hospital. </span><span class="s" data-i="16">Robotic manipulation systems typically consist of a robot</span></div><div class="ln"><span class="s" data-i="16">arm, a gripper or end-effector, and a control system that coordinates the movement of</span></div><div class="ln"><span class="s" data-i="16">the robot arm and gripper. </span><span class="s" data-i="17">The gripper is in charge of grabbing and manipulating items,</span></div><div class="ln"><span class="s" data-i="17">while the robot arm is in charge of transferring them to the target area in the environment.</span></div><div class="ln"><span class="s" data-i="18">Figure 1 shows a classic robotic manipulation workflow. </span><span class="s" data-i="19">Moreover, Matt Mason provided</span></div><div class="ln"><span class="s" data-i="19">a thorough and in-depth description of manipulation in the introduction of his 2018 re-</span></div><div class="ln"><span class="s" data-i="19">view paper [4]. </span><span class="s" data-i="20">Robotic manipulation is used in various fields such as manufacturing,</span></div><div class="ln"><span class="s" data-i="20">agriculture, healthcare, logistics, space exploration, education, and research. </span><span class="s" data-i="21">It entails</span></div><div class="ln"><span class="s" data-i="21">using robots to carry out activities including assembling, planting, harvesting, operating,</span></div><div class="ln"><span class="s" data-i="21">managing goods, and performing experiments. </span><span class="s" data-i="22">In a variety of tasks, robotic manipulation</span></div><div class="ln"><span class="s" data-i="22">can boost productivity, cut human costs, increase accuracy, and enhance safety. </span><span class="s" data-i="23">In the</span></div><div class="ln"><span class="s" data-i="23">upcoming years, its application is anticipated to increase across a range of industries. </span><span class="s" data-i="24">In the</span></div><div class="ln"><span class="s" data-i="24">manufacturing sector, robots are used for tasks including component assembly, welding,</span></div><div class="ln"><span class="s" data-i="24">painting, and packaging. </span><span class="s" data-i="25">They have the ability to work carefully and diligently, increasing</span></div><div class="ln"><span class="s" data-i="25">productivity and decreasing costs. </span><span class="s" data-i="26">In the healthcare sector, robots may assist with tasks</span></div><div class="ln"><span class="s" data-i="26">including surgery, rehabilitation, and geriatric care. </span><span class="s" data-i="27">They can support healthcare personnel</span></div><div class="ln"><span class="s" data-i="27">by letting them focus on more challenging tasks while the robot handles the basic tasks.</span></div><div class="ln"><span class="s" data-i="28">In space exploration, robots are used to complete activities including sample gathering,</span></div><div class="ln"><span class="s" data-i="28">structure construction, and equipment repair. </span><span class="s" data-i="29">They can operate in environments that are</span></div><div class="ln"><span class="s" data-i="29">too dangerous or challenging for people, such as deep space or the ocean floor. </span><span class="s" data-i="30">However,</span></div><div class="ln"><span class="s" data-i="30">the interaction between robotic manipulator arms and objects designed for humans re-</span></div><div class="ln"><span class="s" data-i="30">mains a challenge. </span><span class="s" data-i="31">Up to now, no robots can easily achieve intelligent operations such as</span></div><div class="ln last"><span class="s" data-i="31">handwashing dishes, peeling a pineapple, or rearranging furniture.</span></div></div><div class="para" data-block="5"><div class="ln last"><span class="s" data-i="32">Figure 1. Classic robotic manipulation workflow.</span></div></div><div class="para" data-block="6"><div class="ln first"><span class="s" data-i="33">A subfield of artificial intelligence called deep reinforcement learning combines rein-</span></div><div class="ln"><span class="s" data-i="33">forcement learning and deep learning, a technique for training artificial neural networks [5].</span></div><div class="ln"><span class="s" data-i="34">Robots are programmed with a set of rules and instructions that specify how they should</span></div><div class="ln"><span class="s" data-i="34">interact with items in their surroundings in conventional methods of robotic manipulation.</span></div><div class="ln"><span class="s" data-i="35">This approach is effective for simple activities, but it becomes more challenging as the</span></div><div class="ln"><span class="s" data-i="35">difficulty of the tasks increases. </span><span class="s" data-i="36">Robots may manipulate objects in their surroundings using</span></div><div class="ln"><span class="s" data-i="36">a process called deep reinforcement learning, which allows them to make mistakes and</span></div><div class="ln"><span class="s" data-i="36">learn from them. </span><span class="s" data-i="37">Deep reinforcement learning provides a more flexible and adaptable</span></div><div class="ln"><span class="s" data-i="37">method, allowing robots to learn from experience and change their behavior [6,7]. </span><span class="s" data-i="38">For</span></div><div class="ln"><span class="s" data-i="38">instance, the robot receives positive reinforcement if it successfully picks up and moves</span></div><div class="ln"><span class="s" data-i="38">an object to the desired location. </span><span class="s" data-i="39">If it drops the object or fails to transfer it to the desired</span></div><div class="ln"><span class="s" data-i="39">location, a negative reward is provided. </span><span class="s" data-i="40">Because it has the capacity to correlate some activi-</span></div><div class="ln"><span class="s" data-i="40">ties with good results and other actions with undesirable outcomes, over time, the robot</span></div><div class="ln"><span class="s" data-i="40">develops a strategy for accomplishing the task at hand [8]. </span><span class="s" data-i="41">Robotic manipulation using</span></div><div class="ln"><span class="s" data-i="41">deep reinforcement learning has the potential to change a variety of industries, including</span></div><div class="ln"><span class="s" data-i="41">healthcare and manufacturing. </span><span class="s" data-i="42">Allowing robots to learn from experience and adjust to</span></div><div class="ln"><span class="s" data-i="42">changing situations enables them to perform tasks that are too difficult or dangerous for</span></div><div class="ln last"><span class="s" data-i="42">humans to complete.</span></div></div></div>
+</div>
+<div class="sheet">
+<div class="label">Русский перевод</div>
+<div class="col" id="ru"><p class="rhead"><span class="s" data-i="0">Обзор алгоритмов глубокого обучения с подкреплением для роботизированного манипулирования</span></p><p class="rpara"><span class="s" data-i="1">Аннотация: Задачи роботизированного манипулирования, такие как захват и манипулирование объектами, успешно решаются с помощью систем глубокого обучения с подкреплением.</span> <span class="s" data-i="2">В этом обзоре мы рассматриваем последние достижения в области алгоритмов глубокого обучения с подкреплением для задач роботизированного манипулирования.</span> <span class="s" data-i="3">Сначала мы излагаем основные идеи обучения с подкреплением и описываем компоненты системы обучения с подкреплением.</span> <span class="s" data-i="4">Затем рассматриваем различные алгоритмы глубокого обучения с подкреплением, предложенные для задач роботизированного манипулирования, в том числе методы на основе ценности, методы на основе стратегии и подходы типа «актор — критик».</span> <span class="s" data-i="5">Мы также рассматриваем многочисленные проблемы, возникающие при применении этих алгоритмов в робототехнике, и различные решения, предложенные для их преодоления.</span> <span class="s" data-i="6">Наконец, мы выделяем ряд нерешённых исследовательских вопросов и обсуждаем возможные направления дальнейшего развития этой области.</span></p><p class="rpara"><span class="s" data-i="7">Ключевые слова: обучение с подкреплением; роботизированное манипулирование; графовая нейронная сеть</span></p><p class="rhead"><span class="s" data-i="8">1. Введение</span></p><p class="rpara"><span class="s" data-i="9">Внедрение искусственного интеллекта (ИИ) в рамках Индустрии 4.0 радикально изменило промышленность: машины получили возможность работать автономно, что повысило производительность, снизило затраты и улучшило качество продукции [1].</span> <span class="s" data-i="10">Чтобы быстро и эффективно принимать решения в ходе производства, технология искусственного интеллекта анализирует огромные объёмы данных, создаваемых машинами и производственными процессами.</span> <span class="s" data-i="11">Ожидается, что в ближайшие пять лет совокупная рыночная стоимость этой технологии утроится [2].</span> <span class="s" data-i="12">Робототехника относится к рынкам, для которых прогнозируются одни из самых высоких темпов роста.</span> <span class="s" data-i="13">Концепция роботизированного манипулирования была предложена в 1962 году [3]; идея робота состоит в том, чтобы имитировать поведение человека и решать сложные задачи.</span> <span class="s" data-i="14">Роботизированное манипулирование — это раздел робототехники, посвящённый разработке роботов, способных манипулировать предметами в окружающей среде.</span> <span class="s" data-i="15">Его цель — создавать робототехнические системы, способные выполнять разнообразные действия с предметами, например собирать изделия на заводе, брать и размещать товары на складе или проводить хирургические операции в больнице.</span> <span class="s" data-i="16">Системы роботизированного манипулирования обычно состоят из роботизированной руки, захвата или рабочего органа и системы управления, координирующей движение руки и захвата.</span> <span class="s" data-i="17">Захват отвечает за захватывание предметов и манипулирование ими, а роботизированная рука — за их перемещение в нужную область окружающей среды.</span> <span class="s" data-i="18">На рисунке 1 показана классическая схема роботизированного манипулирования.</span> <span class="s" data-i="19">Кроме того, Мэтт Мейсон подробно и всесторонне описал манипулирование во введении к своей обзорной статье 2018 года [4].</span> <span class="s" data-i="20">Роботизированное манипулирование применяется в различных областях, включая производство, сельское хозяйство, здравоохранение, логистику, освоение космоса, образование и научные исследования.</span> <span class="s" data-i="21">Оно предполагает использование роботов для выполнения таких действий, как сборка, посадка растений, сбор урожая, проведение операций, работа с товарами и выполнение экспериментов.</span> <span class="s" data-i="22">В различных задачах роботизированное манипулирование позволяет повысить производительность, снизить затраты на человеческий труд, увеличить точность и повысить безопасность.</span> <span class="s" data-i="23">Ожидается, что в ближайшие годы его применение будет расширяться в целом ряде отраслей.</span> <span class="s" data-i="24">В производстве роботы используются для таких задач, как сборка компонентов, сварка, покраска и упаковка.</span> <span class="s" data-i="25">Они способны работать аккуратно и усердно, повышая производительность и снижая затраты.</span> <span class="s" data-i="26">В здравоохранении роботы могут помогать с хирургическими операциями, реабилитацией и уходом за пожилыми людьми.</span> <span class="s" data-i="27">Они могут поддерживать медицинский персонал, позволяя ему сосредоточиться на более сложных задачах, пока робот выполняет простые.</span> <span class="s" data-i="28">При освоении космоса роботы используются для сбора образцов, возведения конструкций и ремонта оборудования.</span> <span class="s" data-i="29">Они могут работать в условиях, которые слишком опасны или сложны для людей, например в дальнем космосе или на дне океана.</span> <span class="s" data-i="30">Однако взаимодействие роботизированных рук-манипуляторов с предметами, предназначенными для людей, остаётся сложной задачей.</span> <span class="s" data-i="31">До сих пор роботы не могут с лёгкостью выполнять такие интеллектуальные операции, как мытьё посуды вручную, очистка ананаса или перестановка мебели.</span></p><p class="rpara"><span class="s" data-i="32">Рисунок 1. Классическая схема роботизированного манипулирования.</span></p><p class="rpara"><span class="s" data-i="33">Глубокое обучение с подкреплением — это раздел искусственного интеллекта, объединяющий обучение с подкреплением и глубокое обучение — метод обучения искусственных нейронных сетей [5].</span> <span class="s" data-i="34">В традиционных методах роботизированного манипулирования роботов программируют с помощью набора правил и инструкций, определяющих, как им следует взаимодействовать с предметами в окружающей среде.</span> <span class="s" data-i="35">Этот подход эффективен для простых действий, но с ростом сложности задач его применение становится труднее.</span> <span class="s" data-i="36">Роботы могут манипулировать предметами в окружающей среде с помощью процесса, называемого глубоким обучением с подкреплением, который позволяет им совершать ошибки и учиться на них.</span> <span class="s" data-i="37">Глубокое обучение с подкреплением предлагает более гибкий и адаптивный подход, позволяя роботам учиться на опыте и менять своё поведение [6,7].</span> <span class="s" data-i="38">Например, робот получает положительное подкрепление, если успешно поднимает предмет и перемещает его в нужное место.</span> <span class="s" data-i="39">Если он роняет предмет или не может перенести его в нужное место, ему назначается отрицательное вознаграждение.</span> <span class="s" data-i="40">Поскольку робот способен связывать одни действия с хорошими результатами, а другие — с нежелательными исходами, со временем он вырабатывает стратегию выполнения поставленной задачи [8].</span> <span class="s" data-i="41">Роботизированное манипулирование с использованием глубокого обучения с подкреплением способно изменить различные отрасли, включая здравоохранение и производство.</span> <span class="s" data-i="42">Возможность учиться на опыте и адаптироваться к меняющимся ситуациям позволяет роботам выполнять задачи, которые слишком сложны или опасны для людей.</span></p></div>
+</div>
+</div>
+<div class="bar" id="bar">Кликните на предложение · <kbd>←</kbd> <kbd>→</kbd> переход · <kbd>Esc</kbd> снять выделение</div>
+<div class="foot">Han, D.; Mulyana, B.; Stankovic, V.; Cheng, S. A Survey on Deep Reinforcement Learning Algorithms for Robotic Manipulation. Sensors 2023, 23, 3762. CC BY 4.0.</div>
+<script>
+const all = document.querySelectorAll('.s');
+function setHl(i, on) {
+  document.querySelectorAll('.s[data-i="' + i + '"]').forEach(e => e.classList.toggle('hl', on));
+}
+all.forEach(e => {
+  e.addEventListener('mouseenter', () => setHl(e.dataset.i, true));
+  e.addEventListener('mouseleave', () => setHl(e.dataset.i, false));
+});
+const N = new Set([...all].map(e => +e.dataset.i)).size;
+let cur = -1;
+const bar = document.getElementById('bar');
+function select(i, scroll) {
+  document.querySelectorAll('.s.sel').forEach(e => e.classList.remove('sel'));
+  cur = i;
+  if (i < 0) { bar.innerHTML = 'Кликните на предложение · <kbd>←</kbd> <kbd>→</kbd> переход · <kbd>Esc</kbd> снять выделение'; return; }
+  const els = document.querySelectorAll('.s[data-i="' + i + '"]');
+  els.forEach(e => e.classList.add('sel'));
+  bar.innerHTML = 'Предложение ' + (i + 1) + ' из ' + N + ' · <kbd>←</kbd> <kbd>→</kbd> переход · <kbd>Esc</kbd> снять';
+  if (scroll) els[0].scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  try { localStorage.setItem('hr1_sentence', String(i)); } catch (e) {}
+}
+all.forEach(e => e.addEventListener('click', () => select(+e.dataset.i, false)));
+document.addEventListener('keydown', ev => {
+  if (ev.key === 'ArrowRight') { ev.preventDefault(); select(Math.min(cur + 1, N - 1), true); }
+  else if (ev.key === 'ArrowLeft') { ev.preventDefault(); select(cur < 0 ? 0 : Math.max(cur - 1, 0), true); }
+  else if (ev.key === 'Escape') select(-1, false);
+});
+try { const v = parseInt(localStorage.getItem('hr1_sentence')); if (v >= 0 && v < N) select(v, false); } catch (e) {}
+
+
+</script>
+</body>
+</html>

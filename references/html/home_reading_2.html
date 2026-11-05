@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Home Reading 2 - Article Layout</title>
+<style>
+  :root { --pal: 'Palatino Linotype','Book Antiqua',Palatino,'URW Palladio L','TeX Gyre Pagella','P052',serif; }
+  body { margin: 0; padding: 24px 0 60px; background: #e9e9ec; color: #000; font-family: var(--pal); }
+  .top { width: max-content; margin: 0 auto 14px; font: 13px/1.4 'Segoe UI', Arial, sans-serif; color: #555; text-align: center; }
+  .wrap { display: flex; gap: 28px; justify-content: center; align-items: flex-start; }
+  .sheet { background: #fff; box-shadow: 0 1px 6px rgba(0,0,0,.18); padding: 42pt 40pt 48pt; }
+  .label { font: 11px 'Segoe UI', Arial, sans-serif; color: #888; text-transform: uppercase; letter-spacing: .6px; margin: 0 0 14pt; }
+  .col { width: 392.9pt; font-size: 10pt; line-height: 12.55pt; font-family: var(--pal); }
+
+  /* ---- English: line by line, exactly as in the article ---- */
+  .ln { white-space: nowrap; text-align: justify; text-align-last: justify; height: 12.55pt; overflow: visible; }
+  .ln.last { text-align-last: left; }
+  .para > .ln:first-child.first, .para > .ln.first { padding-left: 21.3pt; }
+  .head { font-weight: bold; margin: 9.5pt 0 3.5pt; }
+  .head .ln { text-align-last: left; }
+  .bul { position: relative; padding-left: 21.6pt; margin: 0; }
+  .bul .dot { position: absolute; left: 0; }
+  .bul + .bul { margin-top: 0; }
+  .para + .bul, .bul:first-of-type { }
+  .bul.pre { margin-top: 2.5pt; }
+  .prev { color: #aaa; }
+  .rpara + .rbul, .para + .bul { margin-top: 2.5pt; }
+  .bul + .para { margin-top: 3.5pt; }
+
+  /* ---- Russian: same font, width and indents, natural wrapping ---- */
+  .rpara, .rbul, .rhead { margin: 0; text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
+  .rpara { text-indent: 21.3pt; }
+  .rpara.cont { text-indent: 0; }
+  .rbul { position: relative; padding-left: 21.6pt; }
+  .rbul .dot { position: absolute; left: 0; }
+  .rhead { font-weight: bold; margin: 9.5pt 0 3.5pt; text-align: left; }
+  .rbul + .rpara { margin-top: 3.5pt; }
+  .rpara + .rbul { margin-top: 2.5pt; }
+
+  /* ---- hover ---- */
+  .s { transition: background .12s; }
+  .s.hl { background: #ffe3a8; box-shadow: 0 0 0 1px #ffe3a8; border-radius: 1px; }
+  .s.sel { background: #ffc94d; box-shadow: 0 0 0 1px #ffc94d; border-radius: 1px; }
+  .s.sel.hl { background: #ffc94d; }
+  .s { cursor: pointer; }
+  .bar { position: fixed; left: 50%; bottom: 14px; transform: translateX(-50%); background: #2c3e50; color: #fff;
+         font: 13px 'Segoe UI', Arial, sans-serif; padding: 7px 16px; border-radius: 18px; opacity: .92; white-space: nowrap; }
+  .bar kbd { background: #fff; color: #2c3e50; border-radius: 3px; padding: 0 5px; margin: 0 2px; font: inherit; }
+  .foot { width: max-content; margin: 18px auto 0; font: 12px 'Segoe UI', Arial, sans-serif; color: #888; }
+</style>
+</head>
+<body>
+<div class="top">Home Reading 2 · наведите курсор на предложение в любой колонке, чтобы подсветить его пару</div>
+<div class="wrap">
+  <div class="sheet">
+    <div class="label">English · Sensors 2023, 23, 3762, pp. 2–3</div>
+    <div class="col" id="en">
+<div class="para"><div class="ln"><span class="prev">humans to complete. </span><span class="s" data-i="0">As research in this area advances, we can expect to see more capable</span></div><div class="ln last"><span class="s" data-i="0">and advanced robots that can manipulate objects more precisely and effectively.</span></div></div>
+<div class="para"><div class="ln first"><span class="s" data-i="1">RL has been successfully applied to a wide range of problems in various fields, in-</span></div><div class="ln"><span class="s" data-i="1">cluding game-playing, recommendation systems, and finance. </span><span class="s" data-i="2">One successful use of RL</span></div><div class="ln"><span class="s" data-i="2">is in the game of Go [9], where DeepMind’s AlphaGo program defeated the world cham-</span></div><div class="ln"><span class="s" data-i="2">pion Lee Sedol in 2016 to attain unparalleled success. </span><span class="s" data-i="3">In addition to its application in</span></div><div class="ln"><span class="s" data-i="3">finance to improve trading tactics and portfolio management, RL has been used to create</span></div><div class="ln"><span class="s" data-i="3">recommendation systems that can learn to give individualized suggestions depending on</span></div><div class="ln"><span class="s" data-i="3">user behavior [10]. </span><span class="s" data-i="4">Moreover, RL has been used for complicated issues in which conven-</span></div><div class="ln"><span class="s" data-i="4">tional rule-based systems or supervised learning approaches fall short, including those in</span></div><div class="ln"><span class="s" data-i="4">the domains of natural language processing [11], drug discovery [12], and autonomous</span></div><div class="ln"><span class="s" data-i="4">driving [13], among others. </span><span class="s" data-i="5">Creating algorithms that can precisely detect and distinguish</span></div><div class="ln"><span class="s" data-i="5">objects in images or video streams is one of the primary issues in computer vision. </span><span class="s" data-i="6">By</span></div><div class="ln"><span class="s" data-i="6">giving agents performance-based feedback in the form of rewards or penalties, RL can be</span></div><div class="ln"><span class="s" data-i="6">utilized to teach agents to recognize objects [6]. </span><span class="s" data-i="7">As RL algorithms are capable of learning</span></div><div class="ln"><span class="s" data-i="7">from experience and adapting to shifting settings, they provide a promising solution to a</span></div><div class="ln last"><span class="s" data-i="7">wide range of difficult issues in several industries.</span></div></div>
+<div class="para"><div class="ln first"><span class="s" data-i="8">In this survey, we will examine the key concepts and algorithms that have been</span></div><div class="ln"><span class="s" data-i="8">developed for DRL in the context of robotic manipulation. </span><span class="s" data-i="9">This will include a review of</span></div><div class="ln"><span class="s" data-i="9">techniques for reward engineering, such as imitation learning and curriculum learning,</span></div><div class="ln"><span class="s" data-i="9">as well as approaches to hierarchical reinforcement learning. </span><span class="s" data-i="10">We will also discuss the</span></div><div class="ln"><span class="s" data-i="10">various network architectures that have been used in DRL for robotic manipulation and</span></div><div class="ln"><span class="s" data-i="10">the challenges associated with transferring learned policies from simulation to the real</span></div><div class="ln"><span class="s" data-i="10">world. </span><span class="s" data-i="11">Finally, we will review both value-based and policy-based DRL algorithms and</span></div><div class="ln"><span class="s" data-i="11">their relative strengths and limitations for robotic manipulation tasks. </span><span class="s" data-i="12">The contributions of</span></div><div class="ln last"><span class="s" data-i="12">the paper are:</span></div></div>
+<div class="bul"><span class="dot">•</span><div class="ln"><span class="s" data-i="13">A tutorial of the current RL algorithms and reward engineering methods used in</span></div><div class="ln last"><span class="s" data-i="13">robotic manipulation.</span></div></div>
+<div class="bul"><span class="dot">•</span><div class="ln"><span class="s" data-i="14">An analysis of the current status and application of RL in robotic manipulation in the</span></div><div class="ln last"><span class="s" data-i="14">past seven years.</span></div></div>
+<div class="bul"><span class="dot">•</span><div class="ln"><span class="s" data-i="15">An overview of the current main trends and directions in the use of RL in robotic</span></div><div class="ln last"><span class="s" data-i="15">manipulation tasks.</span></div></div>
+<div class="para"><div class="ln first"><span class="s" data-i="16">The rest of the paper is organized as follows. </span><span class="s" data-i="17">The methodology used to find and choose</span></div><div class="ln"><span class="s" data-i="17">relevant publications is described in Section 2. </span><span class="s" data-i="18">In Section 3, we introduce the key RL concepts</span></div><div class="ln"><span class="s" data-i="18">and state-of-the-art algorithms. </span><span class="s" data-i="19">Next, Section 4 continues by describing the learning methods</span></div><div class="ln"><span class="s" data-i="19">for DRL. </span><span class="s" data-i="20">In Section 5, we discuss the current neural network architectures in RL. </span><span class="s" data-i="21">In Section 6,</span></div><div class="ln"><span class="s" data-i="21">we take a deep dive into the applications and implementations of robotic manipulation. </span><span class="s" data-i="22">Then,</span></div><div class="ln"><span class="s" data-i="22">we describe the existing challenges and future directions with respect to previous work. </span><span class="s" data-i="23">The</span></div><div class="ln last"><span class="s" data-i="23">final paragraph of Section 7 provides a summary of the knowledge obtained.</span></div></div>
+<div class="head"><div class="ln last"><span class="s" data-i="24">2. Search Methodology</span></div></div>
+<div class="para"><div class="ln first"><span class="s" data-i="25">Since RL is more adaptable in highly dynamic and unstructured environments than</span></div><div class="ln"><span class="s" data-i="25">more traditional or other AI control approaches, there has been a recent increase in interest</span></div><div class="ln"><span class="s" data-i="25">in using RL to operate robotic manipulators [14]. </span><span class="s" data-i="26">These techniques have demonstrated</span></div><div class="ln"><span class="s" data-i="26">impressive results in enabling robots to learn complex tasks and operate in dynamic</span></div><div class="ln"><span class="s" data-i="26">environments. </span><span class="s" data-i="27">Moreover, the growing interest in robotic manipulation in reinforcement</span></div><div class="ln"><span class="s" data-i="27">learning has been stimulated by the expanding availability of affordable and efficient</span></div><div class="ln"><span class="s" data-i="27">robotic hardware, as well as the rising demand for automation across a variety of industries.</span></div><div class="ln"><span class="s" data-i="28">Applications of this technology include manufacturing, logistics, healthcare, and home</span></div><div class="ln"><span class="s" data-i="28">automation, among others. </span><span class="s" data-i="29">So, the purpose of this review is to present an overview of the</span></div><div class="ln"><span class="s" data-i="29">major works using RL in robotic manipulation tasks and to analyze the future directions of</span></div><div class="ln"><span class="s" data-i="29">this topic. </span><span class="s" data-i="30">In order to achieve this goal, a thorough review of the literature is conducted,</span></div><div class="ln last"><span class="s" data-i="30">and the content of more than 150 articles in relevant fields is searched and reviewed.</span></div></div>
+<div class="para"><div class="ln first"><span class="s" data-i="31">Given the enormous amount of literature on the subject, looking for papers on rein-</span></div><div class="ln"><span class="s" data-i="31">forcement learning for robotic manipulation can be a difficult task. </span><span class="s" data-i="32">Start by identifying the</span></div><div class="ln"><span class="s" data-i="32">relevant keywords for the search, such as “reinforcement learning”, “robotic manipulation”,</span></div><div class="ln"><span class="s" data-i="32">“manipulation tasks”, “control policies”, “deep learning”, etc. </span><span class="s" data-i="33">These keywords will help</span></div><div class="ln"><span class="s" data-i="33">narrow down the search to the most relevant papers. </span><span class="s" data-i="34">Use a specialized search engine such</span></div><div class="ln"><span class="s" data-i="34">as Google Scholar, IEEE Xplore, or ArXiv to search for papers related to reinforcement</span></div><div class="ln"><span class="s" data-i="34">learning for robotic manipulation. </span><span class="s" data-i="35">These search engines allow for filtering the results from</span></div><div class="ln"><span class="s" data-i="35">2015 to 2022. </span><span class="s" data-i="36">This period’s start was chosen because of the release of the RL and the deep</span></div><div class="ln"><span class="s" data-i="36">neural network using the AlphaGo program [15]. </span><span class="s" data-i="37">This innovation has made a significant</span></div><div class="ln last"><span class="s" data-i="37">contribution to the rapid growth of RL.</span></div></div>
+    </div>
+  </div>
+  <div class="sheet">
+    <div class="label">Русский перевод</div>
+    <div class="col" id="ru">
+<p class="rpara cont"><span class="s" data-i="0">По мере развития исследований в этой области можно ожидать появления более способных и совершенных роботов, которые смогут манипулировать объектами точнее и эффективнее.</span></p>
+<p class="rpara"><span class="s" data-i="1">Обучение с подкреплением успешно применяется к широкому кругу задач в различных областях, включая игры, системы рекомендаций и финансы.</span> <span class="s" data-i="2">Одним из успешных применений обучения с подкреплением является игра го [9], в которой программа AlphaGo от DeepMind в 2016 году обыграла чемпиона мира Ли Седоля, добившись беспрецедентного успеха.</span> <span class="s" data-i="3">Помимо применения в финансах для улучшения торговых тактик и управления портфелем, обучение с подкреплением использовалось для создания систем рекомендаций, которые могут учиться давать индивидуальные советы в зависимости от поведения пользователя [10].</span> <span class="s" data-i="4">Кроме того, обучение с подкреплением применялось к сложным задачам, с которыми традиционные системы на основе правил и методы обучения с учителем не справляются, включая области обработки естественного языка [11], поиска лекарств [12] и автономного вождения [13], среди прочих.</span> <span class="s" data-i="5">Создание алгоритмов, которые точно обнаруживают и различают объекты на изображениях или видеопотоках, является одной из основных проблем компьютерного зрения.</span> <span class="s" data-i="6">Предоставляя агентам обратную связь на основе результатов в виде вознаграждений или штрафов, обучение с подкреплением можно использовать, чтобы научить агентов распознавать объекты [6].</span> <span class="s" data-i="7">Поскольку алгоритмы обучения с подкреплением способны учиться на опыте и адаптироваться к меняющимся условиям, они предлагают перспективное решение широкого круга сложных задач во многих отраслях.</span></p>
+<p class="rpara"><span class="s" data-i="8">В этом обзоре мы рассмотрим ключевые концепции и алгоритмы, разработанные для глубокого обучения с подкреплением в контексте манипулирования роботами.</span> <span class="s" data-i="9">Это включит обзор методов конструирования вознаграждения, таких как имитационное обучение и обучение по учебной программе, а также подходов к иерархическому обучению с подкреплением.</span> <span class="s" data-i="10">Мы также обсудим различные сетевые архитектуры, применявшиеся в глубоком обучении с подкреплением для манипулирования роботами, и трудности, связанные с переносом обученных стратегий из симуляции в реальный мир.</span> <span class="s" data-i="11">Наконец, мы рассмотрим как алгоритмы глубокого обучения с подкреплением на основе стоимости, так и на основе политики, а также их относительные сильные стороны и ограничения для задач манипулирования роботами.</span> <span class="s" data-i="12">Вклад статьи заключается в следующем:</span></p>
+<p class="rbul"><span class="dot">•</span><span class="bt"><span class="s" data-i="13">Учебный обзор современных алгоритмов обучения с подкреплением и методов конструирования вознаграждения, используемых при манипулировании роботами.</span></span></p>
+<p class="rbul"><span class="dot">•</span><span class="bt"><span class="s" data-i="14">Анализ текущего состояния и применения обучения с подкреплением в манипулировании роботами за последние семь лет.</span></span></p>
+<p class="rbul"><span class="dot">•</span><span class="bt"><span class="s" data-i="15">Обзор основных современных тенденций и направлений использования обучения с подкреплением в задачах манипулирования роботами.</span></span></p>
+<p class="rpara"><span class="s" data-i="16">Остальная часть статьи организована следующим образом.</span> <span class="s" data-i="17">Методология поиска и отбора соответствующих публикаций описана в разделе 2.</span> <span class="s" data-i="18">В разделе 3 мы представляем ключевые концепции обучения с подкреплением и современные алгоритмы.</span> <span class="s" data-i="19">Далее раздел 4 продолжает описанием методов обучения в глубоком обучении с подкреплением.</span> <span class="s" data-i="20">В разделе 5 мы рассматриваем современные архитектуры нейронных сетей в обучении с подкреплением.</span> <span class="s" data-i="21">В разделе 6 мы подробно рассматриваем применение и реализацию манипулирования роботами.</span> <span class="s" data-i="22">Затем мы описываем существующие проблемы и будущие направления по сравнению с предыдущими работами.</span> <span class="s" data-i="23">Заключительный абзац раздела 7 содержит резюме полученных знаний.</span></p>
+<p class="rhead"><span class="s" data-i="24">2. Методология поиска</span></p>
+<p class="rpara"><span class="s" data-i="25">Поскольку обучение с подкреплением лучше адаптируется к высокодинамичным и неструктурированным средам, чем традиционные или другие подходы к управлению на основе ИИ, в последнее время возрос интерес к его использованию для управления роботизированными манипуляторами [14].</span> <span class="s" data-i="26">Эти методы продемонстрировали впечатляющие результаты, позволив роботам осваивать сложные задачи и работать в динамичных средах.</span> <span class="s" data-i="27">Кроме того, растущий интерес к манипулированию роботами с помощью обучения с подкреплением стимулируется расширением доступности недорогого и эффективного робототехнического оборудования, а также растущим спросом на автоматизацию во многих отраслях.</span> <span class="s" data-i="28">Области применения этой технологии включают производство, логистику, здравоохранение и домашнюю автоматизацию, среди прочих.</span> <span class="s" data-i="29">Поэтому цель данного обзора — представить обзор основных работ, использующих обучение с подкреплением в задачах манипулирования роботами, и проанализировать будущие направления этой темы.</span> <span class="s" data-i="30">Для достижения этой цели проведён тщательный обзор литературы: были найдены и изучены материалы более чем 150 статей в соответствующих областях.</span></p>
+<p class="rpara"><span class="s" data-i="31">Учитывая огромный объём литературы по теме, поиск статей об обучении с подкреплением для манипулирования роботами может быть непростой задачей.</span> <span class="s" data-i="32">Начните с определения релевантных ключевых слов для поиска, таких как «обучение с подкреплением», «манипулирование роботами», «задачи манипулирования», «политики управления», «глубокое обучение» и т. д.</span> <span class="s" data-i="33">Эти ключевые слова помогут сузить поиск до наиболее релевантных статей.</span> <span class="s" data-i="34">Используйте специализированную поисковую систему, такую как Google Scholar, IEEE Xplore или ArXiv, чтобы найти статьи, связанные с обучением с подкреплением для манипулирования роботами.</span> <span class="s" data-i="35">Эти поисковые системы позволяют фильтровать результаты за период с 2015 по 2022 год.</span> <span class="s" data-i="36">Начало этого периода было выбрано из-за появления программы AlphaGo, в которой обучение с подкреплением было объединено с глубокой нейронной сетью [15].</span> <span class="s" data-i="37">Это нововведение внесло значительный вклад в быстрый рост обучения с подкреплением.</span></p>
+    </div>
+  </div>
+</div>
+<div class="bar" id="bar">Кликните на предложение · <kbd>←</kbd> <kbd>→</kbd> переход · <kbd>Esc</kbd> снять выделение</div>
+<div class="foot">Han, D.; Mulyana, B.; Stankovic, V.; Cheng, S. A Survey on Deep Reinforcement Learning Algorithms for Robotic Manipulation. Sensors 2023, 23, 3762. CC BY 4.0.</div>
+<script>
+const all = document.querySelectorAll('.s');
+function setHl(i, on) {
+  document.querySelectorAll('.s[data-i="' + i + '"]').forEach(e => e.classList.toggle('hl', on));
+}
+all.forEach(e => {
+  e.addEventListener('mouseenter', () => setHl(e.dataset.i, true));
+  e.addEventListener('mouseleave', () => setHl(e.dataset.i, false));
+});
+// If the installed font is a bit wider than the article's Palladio, tighten letter-spacing
+// slightly so each English line still holds exactly the same words as in the article.
+function fit() {
+  document.querySelectorAll('#en .ln').forEach(l => {
+    l.style.letterSpacing = '0';
+    const over = l.scrollWidth - l.clientWidth;
+    if (over > 0) {
+      const n = l.textContent.length;
+      l.style.letterSpacing = (-(over + 0.5) / n) + 'px';
+    }
+  });
+}
+const N = new Set([...all].map(e => +e.dataset.i)).size;
+let cur = -1;
+const bar = document.getElementById('bar');
+function select(i, scroll) {
+  document.querySelectorAll('.s.sel').forEach(e => e.classList.remove('sel'));
+  cur = i;
+  if (i < 0) { bar.innerHTML = 'Кликните на предложение · <kbd>←</kbd> <kbd>→</kbd> переход · <kbd>Esc</kbd> снять выделение'; return; }
+  const els = document.querySelectorAll('.s[data-i="' + i + '"]');
+  els.forEach(e => e.classList.add('sel'));
+  bar.innerHTML = 'Предложение ' + (i + 1) + ' из ' + N + ' · <kbd>←</kbd> <kbd>→</kbd> переход · <kbd>Esc</kbd> снять';
+  if (scroll) els[0].scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  try { localStorage.setItem('hr2_sentence', String(i)); } catch (e) {}
+}
+all.forEach(e => e.addEventListener('click', () => select(+e.dataset.i, false)));
+document.addEventListener('keydown', ev => {
+  if (ev.key === 'ArrowRight') { ev.preventDefault(); select(Math.min(cur + 1, N - 1), true); }
+  else if (ev.key === 'ArrowLeft') { ev.preventDefault(); select(cur < 0 ? 0 : Math.max(cur - 1, 0), true); }
+  else if (ev.key === 'Escape') select(-1, false);
+});
+try { const v = parseInt(localStorage.getItem('hr2_sentence')); if (v >= 0 && v < N) select(v, false); } catch (e) {}
+(document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(fit);
+window.addEventListener('load', fit);
+</script>
+</body>
+</html>

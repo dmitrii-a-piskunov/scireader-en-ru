@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Home Reading 3 - Article Layout</title>
+<style>
+  :root { --pal: 'Palatino Linotype','Book Antiqua',Palatino,'URW Palladio L','TeX Gyre Pagella','P052',serif; }
+  body { margin: 0; padding: 24px 0 60px; background: #e9e9ec; color: #000; font-family: var(--pal); }
+  .top { width: max-content; margin: 0 auto 14px; font: 13px/1.4 'Segoe UI', Arial, sans-serif; color: #555; text-align: center; }
+  .wrap { display: flex; gap: 28px; justify-content: center; align-items: flex-start; }
+  .sheet { background: #fff; box-shadow: 0 1px 6px rgba(0,0,0,.18); padding: 42pt 40pt 48pt; }
+  .label { font: 11px 'Segoe UI', Arial, sans-serif; color: #888; text-transform: uppercase; letter-spacing: .6px; margin: 0 0 14pt; }
+  .col { width: 392.9pt; font-size: 10pt; line-height: 12.55pt; font-family: var(--pal); }
+
+  /* ---- English: line by line, exactly as in the article ---- */
+  .ln { white-space: nowrap; text-align: justify; text-align-last: justify; height: 12.55pt; overflow: visible; }
+  .ln.last { text-align-last: left; }
+  .para > .ln:first-child.first, .para > .ln.first { padding-left: 21.3pt; }
+  .head { font-weight: bold; margin: 9.5pt 0 3.5pt; }
+  .head .ln { text-align-last: left; }
+  .bul { position: relative; padding-left: 21.6pt; margin: 0; }
+  .bul .dot { position: absolute; left: 0; }
+  .bul + .bul { margin-top: 0; }
+  .para + .bul, .bul:first-of-type { }
+  .bul.pre { margin-top: 2.5pt; }
+  .prev { color: #aaa; }
+  .rpara + .rbul, .para + .bul { margin-top: 2.5pt; }
+  .bul + .para { margin-top: 3.5pt; }
+
+  /* ---- Russian: same font, width and indents, natural wrapping ---- */
+  .rpara, .rbul, .rhead { margin: 0; text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
+  .rpara { text-indent: 21.3pt; }
+  .rpara.cont { text-indent: 0; }
+  .rbul { position: relative; padding-left: 21.6pt; }
+  .rbul .dot { position: absolute; left: 0; }
+  .rhead { font-weight: bold; margin: 9.5pt 0 3.5pt; text-align: left; }
+  .rbul + .rpara { margin-top: 3.5pt; }
+  .rpara + .rbul { margin-top: 2.5pt; }
+
+  /* ---- hover ---- */
+  .s { transition: background .12s; }
+  .s.hl { background: #ffe3a8; box-shadow: 0 0 0 1px #ffe3a8; border-radius: 1px; }
+  .s.sel { background: #ffc94d; box-shadow: 0 0 0 1px #ffc94d; border-radius: 1px; }
+  .s.sel.hl { background: #ffc94d; }
+  .s { cursor: pointer; }
+  .bar { position: fixed; left: 50%; bottom: 14px; transform: translateX(-50%); background: #2c3e50; color: #fff;
+         font: 13px 'Segoe UI', Arial, sans-serif; padding: 7px 16px; border-radius: 18px; opacity: .92; white-space: nowrap; }
+  .bar kbd { background: #fff; color: #2c3e50; border-radius: 3px; padding: 0 5px; margin: 0 2px; font: inherit; }
+  .foot { width: max-content; margin: 18px auto 0; font: 12px 'Segoe UI', Arial, sans-serif; color: #888; }
+
+  /* Home Reading 3: article-like natural line wrapping */
+  #en .para { text-align: justify; text-indent: 21.3pt; margin: 0 0 4pt; }
+  #en .head { text-align: left; text-indent: 0; }
+  #en .equation, #ru .requation { text-align: center; margin: 9pt 0; font-style: italic; }
+  #ru .rpara { margin-bottom: 4pt; }
+  .wrap { padding: 0 20px; }
+  .col { overflow-wrap: break-word; }
+  @media(max-width: 1100px) { .wrap { flex-wrap: wrap; } .sheet { max-width: calc(100vw - 90px); } .col { width: min(392.9pt, calc(100vw - 110px)); } .foot { width: auto; text-align: center; padding: 0 20px; } }
+</style>
+<style>
+/* LaTeX display math with source-style equation numbers */
+#en .equation, #ru .requation { position:relative; font-style:normal; padding: 3pt 28pt; min-height: 22pt; }
+.equation .s, .requation .s { display:block; position:relative; }
+.math-tex { display:inline-block; max-width:100%; }
+.eq-number { position:absolute; right:-25pt; top:50%; transform:translateY(-50%); font-style:normal; font-size:9pt; }
+mjx-container { margin:0 !important; max-width:100%; }
+@media(max-width:600px) { mjx-container { font-size:85% !important; } }
+</style><script>window.MathJax = { tex: { inlineMath: [["\\(", "\\)"]] }, options: { skipHtmlTags: ["script", "noscript", "style", "textarea", "pre", "code"] } };</script><script defer="True" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><style>
+/* Exact source-PDF line breaks: one div per printed line, no browser wrapping. */
+#en .para { text-indent:0; margin:0 0 4pt; }
+#en .para .ln { white-space:pre; text-align:justify; text-align-last:justify; height:12.55pt; overflow:visible; }
+#en .para .ln.last { text-align-last:left; }
+#en .para .ln.first { padding-left:21.3pt; }
+#en .para .ln .s { white-space:pre; }
+#en { overflow-wrap:normal; }
+@media(max-width:1100px) { #en { width:392.9pt; } .sheet:has(#en) { overflow-x:auto; max-width:calc(100vw - 90px); } }
+</style></head>
+<body>
+<div class="top">Home Reading 3 · наведите курсор на предложение в любой колонке, чтобы подсветить его пару</div>
+<div class="wrap">
+<div class="sheet">
+<div class="label">English · Sensors 2023, 23, 3762, pp. 3–5</div>
+<div class="col" id="en"><div class="para"><div class="ln first"><span class="s" data-i="0">Meanwhile, studies that were not appropriate for the scope of this review had to be</span></div><div class="ln"><span class="s" data-i="0">excluded even though they were relevant to the field of RL. </span><span class="s" data-i="1">Studies that are outdated or do</span></div><div class="ln"><span class="s" data-i="1">not contribute to the current state of the field should be excluded. </span><span class="s" data-i="2">Additionally, the authors</span></div><div class="ln"><span class="s" data-i="2">decided to exclude papers that are poorly written or that have significant methodological</span></div><div class="ln last"><span class="s" data-i="2">flaws. </span><span class="s" data-i="3">An overview of the specified search criteria can be found in Table 1.</span></div></div><div class="head"><span class="s" data-i="4">3. Key Concepts and Algorithms of Reinforcement Learning</span></div><div class="para"><div class="ln first"><span class="s" data-i="5">Reinforcement learning is a strategy that encourages an agent to take action and inter-</span></div><div class="ln"><span class="s" data-i="5">act with an environment in order to maximize the total rewards. </span><span class="s" data-i="6">The agent–environment</span></div><div class="ln"><span class="s" data-i="6">interaction process is shown in Figure 2. </span><span class="s" data-i="7">The agent takes action and receives feedback from</span></div><div class="ln"><span class="s" data-i="7">the environment in the form of rewards or punishments. </span><span class="s" data-i="8">The agent uses this feedback to</span></div><div class="ln last"><span class="s" data-i="8">adjust its behavior and improve its performance over time.</span></div></div><div class="para"><div class="ln first"><span class="s" data-i="9">An autonomous agent observes the state s(t) at a time step t and then interacts with</span></div><div class="ln"><span class="s" data-i="9">the environment using an action a(t), reaching the next state s(t + 1) in the process. </span><span class="s" data-i="10">Once a</span></div><div class="ln"><span class="s" data-i="10">new state has been achieved, the agent receives a reward correlated with that state r (t + 1).</span></div><div class="ln"><span class="s" data-i="11">The agent’s goal is to find an optimal policy, i.e., the optimal action in any given state.</span></div><div class="ln"><span class="s" data-i="12">Unlike other types of machine learning—such as supervised and unsupervised learning—</span></div><div class="ln"><span class="s" data-i="12">reinforcement learning can only be thought about sequentially in terms of state-action pairs</span></div><div class="ln last"><span class="s" data-i="12">that appear one after the other.</span></div></div><div class="para"><div class="ln first"><span class="s" data-i="13">RL assesses actions by the outcomes, i.e., the states, they achieve. </span><span class="s" data-i="14">It is goal-oriented</span></div><div class="ln"><span class="s" data-i="14">and seeks to learn sequences of actions that will lead an agent to accomplish its goal or</span></div><div class="ln last"><span class="s" data-i="14">optimize its objective function. </span><span class="s" data-i="15">An example of the RL objective function is:</span></div></div><div class="equation"><span class="s" data-i="16"><span class="math-tex">\(\displaystyle \sum_{t=0}^{\infty}\gamma^{t}r\bigl(s(t),a(t)\bigr)\)</span><span class="eq-number">(1)</span></span></div><div class="para"><div class="ln first"><span class="s" data-i="17">This objective function measures all of the rewards that we will receive from running</span></div><div class="ln last"><span class="s" data-i="17">through the states while exponentially increasing the weight γ.</span></div></div><div class="para"><div class="ln first"><span class="s" data-i="18">Two important concepts of RL are Monte Carlo learning, which is a naive idea in</span></div><div class="ln"><span class="s" data-i="18">which the agent interacts with the environment and learns about the states and rewards,</span></div><div class="ln"><span class="s" data-i="18">and temporal difference (TD) learning, i.e., updating the value at every time step rather</span></div><div class="ln last"><span class="s" data-i="18">than being required to wait to update the values until the end of the episode.</span></div></div><div class="para"><div class="ln first"><span class="s" data-i="19">Although it is difficult to make a standardized classification of RL algorithms due</span></div><div class="ln"><span class="s" data-i="19">to their wide modularity, many current studies tend to divide them into value-based,</span></div><div class="ln last"><span class="s" data-i="19">policy-based, and actor–critic algorithms (see Figure 3).</span></div></div><div class="head"><span class="s" data-i="20">3.1. Markov Decision Process and RL</span></div><div class="para"><div class="ln first"><span class="s" data-i="21">A Markov decision process (MDP) is defined as a tuple hS, A, r, T, γi where S stands</span></div><div class="ln"><span class="s" data-i="21">for a set of states; A stands for actions; r, S × A → R denotes the function specifying</span></div><div class="ln"><span class="s" data-i="21">a reward of taking an action in a state; T : S × A × S → R denotes the state transition</span></div><div class="ln"><span class="s" data-i="21">function; and γ stands for the discount factor implying that a reward obtained in the future</span></div><div class="ln"><span class="s" data-i="21">is worth a smaller amount than an immediate reward. </span><span class="s" data-i="22">Solving an MDP involves finding a</span></div><div class="ln"><span class="s" data-i="22">policy that determines the optimal action for each state, with the goal of maximizing the</span></div><div class="ln"><span class="s" data-i="22">long-term discounted expected reward. </span><span class="s" data-i="23">This policy should be optimal with respect to the</span></div><div class="ln last"><span class="s" data-i="23">MDP’s reward structure and discount factor.</span></div></div><div class="head"><span class="s" data-i="24">3.2. Value-Based RL</span></div><div class="head"><span class="s" data-i="25">3.2.1. Q-Learning</span></div><div class="para"><div class="ln first"><span class="s" data-i="26">Q-learning [16] is a value-based TD method of reinforcement learning that uses Q-</span></div><div class="ln"><span class="s" data-i="26">values (also called state-action values) to iteratively develop the actions of the learning</span></div><div class="ln"><span class="s" data-i="26">agent. </span><span class="s" data-i="27">Q-learning learns the Bellman action-value function Q(s, a), which estimates how</span></div><div class="ln last"><span class="s" data-i="27">good it is to take an action at a given state.</span></div></div><div class="equation"><span class="s" data-i="28"><span class="math-tex">\(\displaystyle Q(s,a)=r(s,a)+\gamma\max_{a}Q(s\prime,a)\)</span><span class="eq-number">(2)</span></span></div><div class="para"><div class="ln first"><span class="s" data-i="29">The Bellman action-value equation describes how to calculate the Q-value for an action</span></div><div class="ln"><span class="s" data-i="29">taken from a particular state, s. </span><span class="s" data-i="30">It is calculated as the sum of the immediate reward for</span></div><div class="ln"><span class="s" data-i="30">the current state and the discounted optimal Q-value for the next state, denoted by γ. </span><span class="s" data-i="31">In</span></div><div class="ln"><span class="s" data-i="31">Q-learning, the Q-value is updated using the following rule: The new Q-value is equal to</span></div><div class="ln"><span class="s" data-i="31">the old Q-value plus the temporal difference error. </span><span class="s" data-i="32">This update can be framed as trying to</span></div><div class="ln last"><span class="s" data-i="32">minimize a loss function, such as the mean squared error loss:</span></div></div><div class="equation"><span class="s" data-i="33"><span class="math-tex">\(\displaystyle L=\left(r+\gamma\max_{a\prime}Q(s\prime,a\prime;\theta\prime)-Q(s,a;\theta)\right)^{2}\)</span><span class="eq-number">(3)</span></span></div><div class="head"><span class="s" data-i="34">3.2.2. SARSA</span></div><div class="para"><div class="ln first"><span class="s" data-i="35">The SARSA [17] algorithm is a policy-based variant of the well-known Q-learning</span></div><div class="ln"><span class="s" data-i="35">algorithm. </span><span class="s" data-i="36">Unlike Q-learning, which is an off-policy technique that learns the Q-value</span></div><div class="ln"><span class="s" data-i="36">using a greedy approach, SARSA is an on-policy technique that uses the action taken by</span></div><div class="ln last"><span class="s" data-i="36">the current policy to learn the Q-value. </span><span class="s" data-i="37">To update Q-values, we use:</span></div></div><div class="equation"><span class="s" data-i="38"><span class="math-tex">\(\displaystyle Q(s,a)=Q(s,a)+\alpha\left[R+\gamma Q(s\prime,a\prime)-Q(s,a)\right]\)</span><span class="eq-number">(4)</span></span></div><div class="para"><div class="ln first"><span class="s" data-i="39">SARSA is a type of on-policy reinforcement learning algorithm, meaning that it learns</span></div><div class="ln"><span class="s" data-i="39">the value of actions based on the policy that is currently being followed. </span><span class="s" data-i="40">In SARSA, the</span></div><div class="ln"><span class="s" data-i="40">next action, a0 , is chosen using the same epsilon-greedy policy as the action that led to</span></div><div class="ln"><span class="s" data-i="40">the current state, s0 . </span><span class="s" data-i="41">One advantage of this approach is that SARSA is able to learn a near-</span></div><div class="ln last"><span class="s" data-i="41">optimal policy while still allowing for some exploration.</span></div></div></div>
+</div>
+<div class="sheet">
+<div class="label">Русский перевод</div>
+<div class="col" id="ru"><p class="rpara"><span class="s" data-i="0">Между тем исследования, не соответствовавшие рамкам данного обзора, пришлось исключить, хотя они и относились к области обучения с подкреплением.</span> <span class="s" data-i="1">Исследования, которые устарели или не вносят вклада в современное состояние области, следует исключать.</span> <span class="s" data-i="2">Кроме того, авторы решили исключить статьи, написанные некачественно или имеющие существенные методологические недостатки.</span> <span class="s" data-i="3">Обзор установленных критериев поиска представлен в таблице 1.</span></p><p class="rhead"><span class="s" data-i="4">3. Основные понятия и алгоритмы обучения с подкреплением</span></p><p class="rpara"><span class="s" data-i="5">Обучение с подкреплением — это стратегия, побуждающая агента действовать и взаимодействовать со средой, чтобы максимизировать суммарное вознаграждение.</span> <span class="s" data-i="6">Процесс взаимодействия агента со средой показан на рисунке 2.</span> <span class="s" data-i="7">Агент выполняет действие и получает обратную связь от среды в виде вознаграждений или наказаний.</span> <span class="s" data-i="8">Агент использует эту обратную связь, чтобы корректировать своё поведение и со временем улучшать результаты.</span></p><p class="rpara"><span class="s" data-i="9">Автономный агент наблюдает состояние s(t) на временном шаге t, затем взаимодействует со средой, выполняя действие a(t), и в результате переходит в следующее состояние s(t + 1).</span> <span class="s" data-i="10">После достижения нового состояния агент получает связанное с ним вознаграждение r(t + 1).</span> <span class="s" data-i="11">Цель агента — найти оптимальную стратегию, то есть оптимальное действие для любого заданного состояния.</span> <span class="s" data-i="12">В отличие от других видов машинного обучения, таких как обучение с учителем и без учителя, обучение с подкреплением можно рассматривать только последовательно, как пары «состояние — действие», возникающие одна за другой.</span></p><p class="rpara"><span class="s" data-i="13">Обучение с подкреплением оценивает действия по результатам, то есть по состояниям, к которым они приводят.</span> <span class="s" data-i="14">Оно ориентировано на цель и стремится освоить последовательности действий, которые позволят агенту достичь цели или оптимизировать целевую функцию.</span> <span class="s" data-i="15">Пример целевой функции обучения с подкреплением:</span></p><p class="requation"><span class="s" data-i="16"><span class="math-tex">\(\displaystyle \sum_{t=0}^{\infty}\gamma^{t}r\bigl(s(t),a(t)\bigr)\)</span><span class="eq-number">(1)</span></span></p><p class="rpara"><span class="s" data-i="17">Эта целевая функция учитывает все вознаграждения, которые будут получены при прохождении состояний, при этом вес γ изменяется экспоненциально.</span></p><p class="rpara"><span class="s" data-i="18">Два важных понятия обучения с подкреплением — обучение методом Монте-Карло, основанное на простой идее взаимодействия агента со средой и изучения состояний и вознаграждений, и обучение на основе временных различий (TD), при котором оценка обновляется на каждом временном шаге, а не только после завершения эпизода.</span></p><p class="rpara"><span class="s" data-i="19">Хотя из-за высокой модульности алгоритмов обучения с подкреплением трудно создать единую классификацию, многие современные исследования разделяют их на алгоритмы на основе ценности, на основе стратегии и типа «актор — критик» (см. рисунок 3).</span></p><p class="rhead"><span class="s" data-i="20">3.1. Марковский процесс принятия решений и обучение с подкреплением</span></p><p class="rpara"><span class="s" data-i="21">Марковский процесс принятия решений (MDP) определяется кортежем ⟨S, A, r, T, γ⟩, где S — множество состояний; A — действия; r, S × A → R — функция, задающая вознаграждение за действие в определённом состоянии; T : S × A × S → R — функция перехода между состояниями; а γ — коэффициент дисконтирования, означающий, что будущее вознаграждение ценится меньше немедленного.</span> <span class="s" data-i="22">Решение MDP предполагает поиск стратегии, определяющей оптимальное действие для каждого состояния с целью максимизации долгосрочного ожидаемого вознаграждения с учётом дисконтирования.</span> <span class="s" data-i="23">Такая стратегия должна быть оптимальной с учётом структуры вознаграждений MDP и коэффициента дисконтирования.</span></p><p class="rhead"><span class="s" data-i="24">3.2. Обучение с подкреплением на основе ценности</span></p><p class="rhead"><span class="s" data-i="25">3.2.1. Q-обучение</span></p><p class="rpara"><span class="s" data-i="26">Q-обучение [16] — это метод обучения с подкреплением на основе временных различий и ценности, использующий Q-значения (также называемые значениями пар «состояние — действие») для последовательного совершенствования действий обучающегося агента.</span> <span class="s" data-i="27">Q-обучение осваивает функцию ценности действия Беллмана Q(s, a), которая оценивает, насколько полезно выполнить определённое действие в заданном состоянии.</span></p><p class="requation"><span class="s" data-i="28"><span class="math-tex">\(\displaystyle Q(s,a)=r(s,a)+\gamma\max_{a}Q(s\prime,a)\)</span><span class="eq-number">(2)</span></span></p><p class="rpara"><span class="s" data-i="29">Уравнение Беллмана для ценности действия описывает, как вычислить Q-значение действия, выполненного из определённого состояния s.</span> <span class="s" data-i="30">Оно вычисляется как сумма немедленного вознаграждения для текущего состояния и дисконтированного оптимального Q-значения для следующего состояния, с коэффициентом γ.</span> <span class="s" data-i="31">В Q-обучении Q-значение обновляется по следующему правилу: новое Q-значение равно прежнему Q-значению плюс ошибка временной разности.</span> <span class="s" data-i="32">Это обновление можно представить как попытку минимизировать функцию потерь, например среднеквадратичную ошибку:</span></p><p class="requation"><span class="s" data-i="33"><span class="math-tex">\(\displaystyle L=\left(r+\gamma\max_{a\prime}Q(s\prime,a\prime;\theta\prime)-Q(s,a;\theta)\right)^{2}\)</span><span class="eq-number">(3)</span></span></p><p class="rhead"><span class="s" data-i="34">3.2.2. SARSA</span></p><p class="rpara"><span class="s" data-i="35">Алгоритм SARSA [17] — вариант известного алгоритма Q-обучения, основанный на стратегии.</span> <span class="s" data-i="36">В отличие от Q-обучения, которое является внестратегийным методом и осваивает Q-значение с помощью жадного подхода, SARSA — стратегийный метод, использующий действие, выбранное текущей стратегией, для обучения Q-значению.</span> <span class="s" data-i="37">Для обновления Q-значений используется:</span></p><p class="requation"><span class="s" data-i="38"><span class="math-tex">\(\displaystyle Q(s,a)=Q(s,a)+\alpha\left[R+\gamma Q(s\prime,a\prime)-Q(s,a)\right]\)</span><span class="eq-number">(4)</span></span></p><p class="rpara"><span class="s" data-i="39">SARSA — алгоритм обучения с подкреплением на основе текущей стратегии: он оценивает действия в соответствии со стратегией, которой агент следует в данный момент.</span> <span class="s" data-i="40">В SARSA следующее действие a′ выбирается по той же эпсилон-жадной стратегии, что и действие, приведшее к текущему состоянию s′.</span> <span class="s" data-i="41">Одно из преимуществ этого подхода состоит в том, что SARSA может освоить почти оптимальную стратегию, сохраняя возможность некоторого исследования среды.</span></p></div>
+</div>
+</div>
+<div class="bar" id="bar">Кликните на предложение · <kbd>←</kbd> <kbd>→</kbd> переход · <kbd>Esc</kbd> снять выделение</div>
+<div class="foot">Han, D.; Mulyana, B.; Stankovic, V.; Cheng, S. A Survey on Deep Reinforcement Learning Algorithms for Robotic Manipulation. Sensors 2023, 23, 3762. CC BY 4.0.</div>
+<script>
+const all = document.querySelectorAll('.s');
+function setHl(i, on) {
+  document.querySelectorAll('.s[data-i="' + i + '"]').forEach(e => e.classList.toggle('hl', on));
+}
+all.forEach(e => {
+  e.addEventListener('mouseenter', () => setHl(e.dataset.i, true));
+  e.addEventListener('mouseleave', () => setHl(e.dataset.i, false));
+});
+const N = new Set([...all].map(e => +e.dataset.i)).size;
+let cur = -1;
+const bar = document.getElementById('bar');
+function select(i, scroll) {
+  document.querySelectorAll('.s.sel').forEach(e => e.classList.remove('sel'));
+  cur = i;
+  if (i < 0) { bar.innerHTML = 'Кликните на предложение · <kbd>←</kbd> <kbd>→</kbd> переход · <kbd>Esc</kbd> снять выделение'; return; }
+  const els = document.querySelectorAll('.s[data-i="' + i + '"]');
+  els.forEach(e => e.classList.add('sel'));
+  bar.innerHTML = 'Предложение ' + (i + 1) + ' из ' + N + ' · <kbd>←</kbd> <kbd>→</kbd> переход · <kbd>Esc</kbd> снять';
+  if (scroll) els[0].scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  try { localStorage.setItem('hr3_sentence', String(i)); } catch (e) {}
+}
+all.forEach(e => e.addEventListener('click', () => select(+e.dataset.i, false)));
+document.addEventListener('keydown', ev => {
+  if (ev.key === 'ArrowRight') { ev.preventDefault(); select(Math.min(cur + 1, N - 1), true); }
+  else if (ev.key === 'ArrowLeft') { ev.preventDefault(); select(cur < 0 ? 0 : Math.max(cur - 1, 0), true); }
+  else if (ev.key === 'Escape') select(-1, false);
+});
+try { const v = parseInt(localStorage.getItem('hr3_sentence')); if (v >= 0 && v < N) select(v, false); } catch (e) {}
+
+
+</script>
+</body>
+</html>
