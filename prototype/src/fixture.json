@@ -1,0 +1,212 @@
+[
+  {
+    "id": 0,
+    "en": "Meanwhile, studies that were not appropriate for the scope of this review had to be excluded even though they were relevant to the field of RL.",
+    "ru": "Между тем исследования, не соответствовавшие рамкам данного обзора, пришлось исключить, хотя они и относились к области обучения с подкреплением."
+  },
+  {
+    "id": 1,
+    "en": "Studies that are outdated or do not contribute to the current state of the field should be excluded.",
+    "ru": "Исследования, которые устарели или не вносят вклада в современное состояние области, следует исключать."
+  },
+  {
+    "id": 2,
+    "en": "Additionally, the authors decided to exclude papers that are poorly written or that have significant methodological flaws.",
+    "ru": "Кроме того, авторы решили исключить статьи, написанные некачественно или имеющие существенные методологические недостатки."
+  },
+  {
+    "id": 3,
+    "en": "An overview of the specified search criteria can be found in Table 1.",
+    "ru": "Обзор установленных критериев поиска представлен в таблице 1."
+  },
+  {
+    "id": 4,
+    "en": "3. Key Concepts and Algorithms of Reinforcement Learning",
+    "ru": "3. Основные понятия и алгоритмы обучения с подкреплением"
+  },
+  {
+    "id": 5,
+    "en": "Reinforcement learning is a strategy that encourages an agent to take action and inter- act with an environment in order to maximize the total rewards.",
+    "ru": "Обучение с подкреплением — это стратегия, побуждающая агента действовать и взаимодействовать со средой, чтобы максимизировать суммарное вознаграждение."
+  },
+  {
+    "id": 6,
+    "en": "The agent–environment interaction process is shown in Figure 2.",
+    "ru": "Процесс взаимодействия агента со средой показан на рисунке 2."
+  },
+  {
+    "id": 7,
+    "en": "The agent takes action and receives feedback from the environment in the form of rewards or punishments.",
+    "ru": "Агент выполняет действие и получает обратную связь от среды в виде вознаграждений или наказаний."
+  },
+  {
+    "id": 8,
+    "en": "The agent uses this feedback to adjust its behavior and improve its performance over time.",
+    "ru": "Агент использует эту обратную связь, чтобы корректировать своё поведение и со временем улучшать результаты."
+  },
+  {
+    "id": 9,
+    "en": "An autonomous agent observes the state s(t) at a time step t and then interacts with the environment using an action a(t), reaching the next state s(t + 1) in the process.",
+    "ru": "Автономный агент наблюдает состояние s(t) на временном шаге t, затем взаимодействует со средой, выполняя действие a(t), и в результате переходит в следующее состояние s(t + 1)."
+  },
+  {
+    "id": 10,
+    "en": "Once a new state has been achieved, the agent receives a reward correlated with that state r (t + 1).",
+    "ru": "После достижения нового состояния агент получает связанное с ним вознаграждение r(t + 1)."
+  },
+  {
+    "id": 11,
+    "en": "The agent’s goal is to find an optimal policy, i.e., the optimal action in any given state.",
+    "ru": "Цель агента — найти оптимальную стратегию, то есть оптимальное действие для любого заданного состояния."
+  },
+  {
+    "id": 12,
+    "en": "Unlike other types of machine learning—such as supervised and unsupervised learning— reinforcement learning can only be thought about sequentially in terms of state-action pairs that appear one after the other.",
+    "ru": "В отличие от других видов машинного обучения, таких как обучение с учителем и без учителя, обучение с подкреплением можно рассматривать только последовательно, как пары «состояние — действие», возникающие одна за другой."
+  },
+  {
+    "id": 13,
+    "en": "RL assesses actions by the outcomes, i.e., the states, they achieve.",
+    "ru": "Обучение с подкреплением оценивает действия по результатам, то есть по состояниям, к которым они приводят."
+  },
+  {
+    "id": 14,
+    "en": "It is goal-oriented and seeks to learn sequences of actions that will lead an agent to accomplish its goal or optimize its objective function.",
+    "ru": "Оно ориентировано на цель и стремится освоить последовательности действий, которые позволят агенту достичь цели или оптимизировать целевую функцию."
+  },
+  {
+    "id": 15,
+    "en": "An example of the RL objective function is:",
+    "ru": "Пример целевой функции обучения с подкреплением:"
+  },
+  {
+    "id": 16,
+    "en": "\\(\\displaystyle \\sum_{t=0}^{\\infty}\\gamma^{t}r\\bigl(s(t),a(t)\\bigr)\\)(1)",
+    "ru": "\\(\\displaystyle \\sum_{t=0}^{\\infty}\\gamma^{t}r\\bigl(s(t),a(t)\\bigr)\\)(1)"
+  },
+  {
+    "id": 17,
+    "en": "This objective function measures all of the rewards that we will receive from running through the states while exponentially increasing the weight γ.",
+    "ru": "Эта целевая функция учитывает все вознаграждения, которые будут получены при прохождении состояний, при этом вес γ изменяется экспоненциально."
+  },
+  {
+    "id": 18,
+    "en": "Two important concepts of RL are Monte Carlo learning, which is a naive idea in which the agent interacts with the environment and learns about the states and rewards, and temporal difference (TD) learning, i.e., updating the value at every time step rather than being required to wait to update the values until the end of the episode.",
+    "ru": "Два важных понятия обучения с подкреплением — обучение методом Монте-Карло, основанное на простой идее взаимодействия агента со средой и изучения состояний и вознаграждений, и обучение на основе временных различий (TD), при котором оценка обновляется на каждом временном шаге, а не только после завершения эпизода."
+  },
+  {
+    "id": 19,
+    "en": "Although it is difficult to make a standardized classification of RL algorithms due to their wide modularity, many current studies tend to divide them into value-based, policy-based, and actor–critic algorithms (see Figure 3).",
+    "ru": "Хотя из-за высокой модульности алгоритмов обучения с подкреплением трудно создать единую классификацию, многие современные исследования разделяют их на алгоритмы на основе ценности, на основе стратегии и типа «актор — критик» (см. рисунок 3)."
+  },
+  {
+    "id": 20,
+    "en": "3.1. Markov Decision Process and RL",
+    "ru": "3.1. Марковский процесс принятия решений и обучение с подкреплением"
+  },
+  {
+    "id": 21,
+    "en": "A Markov decision process (MDP) is defined as a tuple hS, A, r, T, γi where S stands for a set of states; A stands for actions; r, S × A → R denotes the function specifying a reward of taking an action in a state; T : S × A × S → R denotes the state transition function; and γ stands for the discount factor implying that a reward obtained in the future is worth a smaller amount than an immediate reward.",
+    "ru": "Марковский процесс принятия решений (MDP) определяется кортежем ⟨S, A, r, T, γ⟩, где S — множество состояний; A — действия; r, S × A → R — функция, задающая вознаграждение за действие в определённом состоянии; T : S × A × S → R — функция перехода между состояниями; а γ — коэффициент дисконтирования, означающий, что будущее вознаграждение ценится меньше немедленного."
+  },
+  {
+    "id": 22,
+    "en": "Solving an MDP involves finding a policy that determines the optimal action for each state, with the goal of maximizing the long-term discounted expected reward.",
+    "ru": "Решение MDP предполагает поиск стратегии, определяющей оптимальное действие для каждого состояния с целью максимизации долгосрочного ожидаемого вознаграждения с учётом дисконтирования."
+  },
+  {
+    "id": 23,
+    "en": "This policy should be optimal with respect to the MDP’s reward structure and discount factor.",
+    "ru": "Такая стратегия должна быть оптимальной с учётом структуры вознаграждений MDP и коэффициента дисконтирования."
+  },
+  {
+    "id": 24,
+    "en": "3.2. Value-Based RL",
+    "ru": "3.2. Обучение с подкреплением на основе ценности"
+  },
+  {
+    "id": 25,
+    "en": "3.2.1. Q-Learning",
+    "ru": "3.2.1. Q-обучение"
+  },
+  {
+    "id": 26,
+    "en": "Q-learning [16] is a value-based TD method of reinforcement learning that uses Q- values (also called state-action values) to iteratively develop the actions of the learning agent.",
+    "ru": "Q-обучение [16] — это метод обучения с подкреплением на основе временных различий и ценности, использующий Q-значения (также называемые значениями пар «состояние — действие») для последовательного совершенствования действий обучающегося агента."
+  },
+  {
+    "id": 27,
+    "en": "Q-learning learns the Bellman action-value function Q(s, a), which estimates how good it is to take an action at a given state.",
+    "ru": "Q-обучение осваивает функцию ценности действия Беллмана Q(s, a), которая оценивает, насколько полезно выполнить определённое действие в заданном состоянии."
+  },
+  {
+    "id": 28,
+    "en": "\\(\\displaystyle Q(s,a)=r(s,a)+\\gamma\\max_{a}Q(s\\prime,a)\\)(2)",
+    "ru": "\\(\\displaystyle Q(s,a)=r(s,a)+\\gamma\\max_{a}Q(s\\prime,a)\\)(2)"
+  },
+  {
+    "id": 29,
+    "en": "The Bellman action-value equation describes how to calculate the Q-value for an action taken from a particular state, s.",
+    "ru": "Уравнение Беллмана для ценности действия описывает, как вычислить Q-значение действия, выполненного из определённого состояния s."
+  },
+  {
+    "id": 30,
+    "en": "It is calculated as the sum of the immediate reward for the current state and the discounted optimal Q-value for the next state, denoted by γ.",
+    "ru": "Оно вычисляется как сумма немедленного вознаграждения для текущего состояния и дисконтированного оптимального Q-значения для следующего состояния, с коэффициентом γ."
+  },
+  {
+    "id": 31,
+    "en": "In Q-learning, the Q-value is updated using the following rule: The new Q-value is equal to the old Q-value plus the temporal difference error.",
+    "ru": "В Q-обучении Q-значение обновляется по следующему правилу: новое Q-значение равно прежнему Q-значению плюс ошибка временной разности."
+  },
+  {
+    "id": 32,
+    "en": "This update can be framed as trying to minimize a loss function, such as the mean squared error loss:",
+    "ru": "Это обновление можно представить как попытку минимизировать функцию потерь, например среднеквадратичную ошибку:"
+  },
+  {
+    "id": 33,
+    "en": "\\(\\displaystyle L=\\left(r+\\gamma\\max_{a\\prime}Q(s\\prime,a\\prime;\\theta\\prime)-Q(s,a;\\theta)\\right)^{2}\\)(3)",
+    "ru": "\\(\\displaystyle L=\\left(r+\\gamma\\max_{a\\prime}Q(s\\prime,a\\prime;\\theta\\prime)-Q(s,a;\\theta)\\right)^{2}\\)(3)"
+  },
+  {
+    "id": 34,
+    "en": "3.2.2. SARSA",
+    "ru": "3.2.2. SARSA"
+  },
+  {
+    "id": 35,
+    "en": "The SARSA [17] algorithm is a policy-based variant of the well-known Q-learning algorithm.",
+    "ru": "Алгоритм SARSA [17] — вариант известного алгоритма Q-обучения, основанный на стратегии."
+  },
+  {
+    "id": 36,
+    "en": "Unlike Q-learning, which is an off-policy technique that learns the Q-value using a greedy approach, SARSA is an on-policy technique that uses the action taken by the current policy to learn the Q-value.",
+    "ru": "В отличие от Q-обучения, которое является внестратегийным методом и осваивает Q-значение с помощью жадного подхода, SARSA — стратегийный метод, использующий действие, выбранное текущей стратегией, для обучения Q-значению."
+  },
+  {
+    "id": 37,
+    "en": "To update Q-values, we use:",
+    "ru": "Для обновления Q-значений используется:"
+  },
+  {
+    "id": 38,
+    "en": "\\(\\displaystyle Q(s,a)=Q(s,a)+\\alpha\\left[R+\\gamma Q(s\\prime,a\\prime)-Q(s,a)\\right]\\)(4)",
+    "ru": "\\(\\displaystyle Q(s,a)=Q(s,a)+\\alpha\\left[R+\\gamma Q(s\\prime,a\\prime)-Q(s,a)\\right]\\)(4)"
+  },
+  {
+    "id": 39,
+    "en": "SARSA is a type of on-policy reinforcement learning algorithm, meaning that it learns the value of actions based on the policy that is currently being followed.",
+    "ru": "SARSA — алгоритм обучения с подкреплением на основе текущей стратегии: он оценивает действия в соответствии со стратегией, которой агент следует в данный момент."
+  },
+  {
+    "id": 40,
+    "en": "In SARSA, the next action, a0 , is chosen using the same epsilon-greedy policy as the action that led to the current state, s0 .",
+    "ru": "В SARSA следующее действие a′ выбирается по той же эпсилон-жадной стратегии, что и действие, приведшее к текущему состоянию s′."
+  },
+  {
+    "id": 41,
+    "en": "One advantage of this approach is that SARSA is able to learn a near- optimal policy while still allowing for some exploration.",
+    "ru": "Одно из преимуществ этого подхода состоит в том, что SARSA может освоить почти оптимальную стратегию, сохраняя возможность некоторого исследования среды."
+  }
+]
